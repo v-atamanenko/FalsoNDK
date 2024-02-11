@@ -26,7 +26,7 @@ typedef struct inputQueue {
 AInputQueue * AInputQueue_create() {
     if (g_AInputQueue) return g_AInputQueue;
 
-    auto * iq = reinterpret_cast<inputQueue *>(malloc(sizeof(inputQueue)));
+    auto * iq = new inputQueue();
     iq->mDispatchFd = pseudo_eventfd(0, PSEUDO_EFD_NONBLOCK | PSEUDO_EFD_SEMAPHORE);
 
     if (iq->mDispatchFd < 0) {
